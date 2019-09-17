@@ -31,11 +31,11 @@ function createQuantityInput(){
   const div = document.createElement('div')
   div.classList.add('quantity')
   const label = document.createElement('label')
-  label.innerText('QTY')
+  label.innerText = 'QTY'
   const input = document.createElement('input')
   input.setAttribute("type", "number")
-  .setAttribute("value","0")
-  .setAttribute("min","0")
+  input.setAttribute("value","0")
+  input.setAttribute("min","0")
   div.appendChild(label)
   div.appendChild(input)
 
@@ -48,8 +48,10 @@ function createDeleteButton(){
   div.classList.add('delete')
 
   const button = document.createElement('button')
-  button.classList.add('btn-delete', 'btn')
-  button.innerText('Delete')
+  button.classList.add('btn-delete')
+  button.classList.add('btn')
+  button.innerText ='Delete'
+  button.onclick = deleteItem;
   div.appendChild(button)
 
   return div
@@ -58,7 +60,7 @@ function createDeleteButton(){
 function createQuantityNode(){
   const div = document.createElement('div')
   div.classList.add('total-price')
-  div.innerText('0')
+  div.innerText = '0'
   return div
 }
 
@@ -70,11 +72,11 @@ function createNewItemRow(itemName, itemUnitPrice){
 
   const divName = document.createElement('div')
   divName.classList.add('name')
-  divName.innerText(itemName)
+  divName.innerText = itemName
 
   const divPrice = document.createElement('div')
   divPrice.classList.add('price')
-  divPrice.innerHTML('$<span>' + itemUnitPrice + '</span>')
+  divPrice.innerHTML = '$<span>' + itemUnitPrice + '</span>'
 
   const divContainer = document.querySelector('.container')
   const divProduct = document.createElement('div')
@@ -90,8 +92,11 @@ function createNewItemRow(itemName, itemUnitPrice){
 function createNewItem(){
   const name = document.getElementById('nameInput').value
   const price = document.getElementById('priceInput').value
-  createNewItemRow(name,price)
+  if(name && price){
+    createNewItemRow(name,price)
+  }
 }
+
 
 window.onload = function(){
   var calculatePriceButton = document.getElementById('calc-prices-button');
